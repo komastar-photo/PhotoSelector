@@ -1,5 +1,6 @@
 import os
 import sys
+import platform
 from PyQt6 import uic
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtWidgets import QFileDialog
@@ -11,8 +12,12 @@ from PyQt6.QtWidgets import QProgressBar
 from processor.select_from_files import SelectFromFiles
 from processor.select_from_text import SelectFromText
 
-
-ui_data = os.path.join(os.getcwd(), "resources/ui/app_window.ui")
+ui_data = ''
+if platform.system() == 'Windows':
+    ui_data = os.path.join(os.getcwd(), 'resources/ui/app_window.ui')
+else:
+    exec_path = os.path.dirname(sys.executable)
+    ui_data = os.path.join(exec_path, 'resources/ui/app_window.ui')
 ui_class = uic.loadUiType(ui_data)[0]
 
 
@@ -69,7 +74,12 @@ class MainWindow(QMainWindow, ui_class):
     def __on_click_copy(self):
         if not self.__is_valid():
             return
-        SelectFromFiles.select(self.__selected_path, self.__target_path, self.__on_update_progress)
+
+        selected_text_path = os.path.join(self.__selected_path, 'selected.txt')
+        if os.path.exists(selected_text_path):
+            SelectFromText.select(selected_text_path, self.__target_path, self.__on_update_progress)
+        else:
+            SelectFromFiles.select(self.__selected_path, self.__target_path, self.__on_update_progress)
 
     def __is_valid(self):
         if self.__selected_path == '' or self.__target_path == '':
