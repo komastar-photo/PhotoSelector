@@ -22,7 +22,7 @@ class SelectFromFiles:
                 src = f'{src_full_path}.{ext}'
                 dst = f'{dst_full_path}.{ext}'
                 if os.path.exists(src):
-                    shutil.copy(src, dst)
+                    shutil.move(src, dst)
             process_count += 1
             progress_callback(process_count * ratio_factor)
 

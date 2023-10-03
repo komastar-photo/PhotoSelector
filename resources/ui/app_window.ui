@@ -272,7 +272,7 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Copy</string>
+          <string>Move</string>
          </property>
         </widget>
        </item>

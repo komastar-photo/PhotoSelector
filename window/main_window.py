@@ -69,7 +69,12 @@ class MainWindow(QMainWindow, ui_class):
     def __on_click_copy(self):
         if not self.__is_valid():
             return
-        SelectFromFiles.select(self.__selected_path, self.__target_path, self.__on_update_progress)
+
+        selected_text_path = os.path.join(self.__selected_path, 'selected.txt')
+        if os.path.exists(selected_text_path):
+            SelectFromText.select(selected_text_path, self.__target_path, self.__on_update_progress)
+        else:
+            SelectFromFiles.select(self.__selected_path, self.__target_path, self.__on_update_progress)
 
     def __is_valid(self):
         if self.__selected_path == '' or self.__target_path == '':
