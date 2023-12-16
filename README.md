@@ -1,3 +1,6 @@
+# 주의사항
+해당 앱을 사용하며 발생하는 문제에 대해선 어떤 책임도 지지 않습니다.
+
 ![image](https://github.com/komastar-photo/PhotoSelector/assets/74722700/ff26cdbf-c3bf-4433-9ff0-5c18b3ae28c1)
 
 ---
