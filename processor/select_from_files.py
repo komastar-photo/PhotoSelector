@@ -1,7 +1,7 @@
 import os
 import shutil
 
-extension_list = ['jpg', 'jpeg', 'cr2', 'cr3', 'arw']
+extension_list = ['jpg', 'jpeg', 'crw', 'cr2', 'cr3', 'arw', 'nef', 'nrw', 'dng', 'raw', 'raf', 'tiff', 'xmp']
 
 
 class SelectFromFiles:
