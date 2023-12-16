@@ -237,7 +237,7 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Select</string>
+          <string>Target</string>
          </property>
         </widget>
        </item>
