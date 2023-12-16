@@ -1,5 +1,6 @@
 import os
 import sys
+import platform
 from PyQt6 import uic
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtWidgets import QFileDialog
@@ -11,8 +12,12 @@ from PyQt6.QtWidgets import QProgressBar
 from processor.select_from_files import SelectFromFiles
 from processor.select_from_text import SelectFromText
 
-
-ui_data = os.path.join(os.getcwd(), "resources/ui/app_window.ui")
+ui_data = ''
+if platform.system() == 'Windows':
+    ui_data = os.path.join(os.getcwd(), 'resources/ui/app_window.ui')
+else:
+    exec_path = os.path.dirname(sys.executable)
+    ui_data = os.path.join(exec_path, 'resources/ui/app_window.ui')
 ui_class = uic.loadUiType(ui_data)[0]
 
 
